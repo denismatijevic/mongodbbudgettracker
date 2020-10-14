@@ -31,7 +31,7 @@ function checkDatabase() {
   const store = transaction.objectStore("pending");
   const getAll = store.getAll();
 }
-
+// opens a transaction in pending db if it is successfull
 getAll.onsuccess = function() {
   if (getAll.result.length > 0) {
     fetch("/api/transactions/bulk", {
@@ -49,4 +49,5 @@ getAll.onsuccess = function() {
     });
   };
 }
+// event listener for the app being back online
 window.addEventListener("online", checkDatabase);
